@@ -1,0 +1,16 @@
+<style id="antiClickjack">
+  body { display: none !important; }
+</style>
+
+<script>
+  if (self === top) {
+    const antiClickjack = document.getElementById("antiClickjack");
+    antiClickjack.parentNode.removeChild(antiClickjack);
+  } else {
+    try {
+      top.location = self.location;
+    } catch (e) {
+      document.body.innerHTML = "<h1>Embedding this site is not allowed.</h1>";
+    }
+  }
+</script>
